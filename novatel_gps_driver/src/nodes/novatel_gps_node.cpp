@@ -164,10 +164,10 @@ namespace novatel_gps_driver
     {
       imu_pub_ = swri::advertise<sensor_msgs::msg::Imu>(*this, "imu", 100);
       novatel_imu_pub_ = swri::advertise<novatel_gps_msgs::msg::NovatelCorrectedImuData>(*this, "corrimudata", 100);
-      insstdev_pub_ = swri::advertise<novatel_gps_msgs::msg::Insstdev>(*this, "insstdev", 100);
+      // insstdev_pub_ = swri::advertise<novatel_gps_msgs::msg::Insstdev>(*this, "insstdev", 100);
       inspva_pub_ = swri::advertise<novatel_gps_msgs::msg::Inspva>(*this, "inspva", 100);
-      inspvax_pub_ = swri::advertise<novatel_gps_msgs::msg::Inspvax>(*this, "inspvax", 100);
-      inscov_pub_ = swri::advertise<novatel_gps_msgs::msg::Inscov>(*this, "inscov", 100);
+      // inspvax_pub_ = swri::advertise<novatel_gps_msgs::msg::Inspvax>(*this, "inspvax", 100);
+      // inscov_pub_ = swri::advertise<novatel_gps_msgs::msg::Inscov>(*this, "inscov", 100);
     }
 
     if (publish_gpgsv_)
@@ -182,7 +182,7 @@ namespace novatel_gps_driver
 
     if (publish_novatel_positions_)
     {
-      novatel_position_pub_ = swri::advertise<novatel_gps_msgs::msg::NovatelPosition>(*this, "bestpos", 100);
+      novatel_position_pub_ = swri::advertise<novatel_gps_msgs::msg::NovatelPosition>(*this, "bestpos", 20);
     }
 
     if (publish_novatel_xyz_positions_)

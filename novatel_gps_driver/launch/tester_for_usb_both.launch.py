@@ -13,11 +13,31 @@ def generate_launch_description():
         composable_node_descriptions=[
             launch_ros.descriptions.ComposableNode(
                 package='novatel_gps_driver',
-                node_plugin='novatel_gps_driver::NovatelGpsNode',
-                node_name='novatel_gps',
+                plugin='novatel_gps_driver::NovatelGpsNode',
+                name='novatel_gps',
+                namespace='novatel_top',
                 parameters=[{
                     'connection_type': 'serial',
                     'device': '/dev/ttyUSB0',
+                    'verbose': True,
+                    'imu_sample_rate': -1.0,
+                    'publish_novatel_positions': True,
+                    'publish_novatel_psrdop2': True,
+                    'publish_novatel_velocity': True,
+                    'publish_imu_messages': True,
+                    'use_binary_messages':True,
+                    'imu_frame_id':'/imu',
+                    'frame_id': '/gps'
+                }]
+            ),
+            launch_ros.descriptions.ComposableNode(
+                package='novatel_gps_driver',
+                plugin='novatel_gps_driver::NovatelGpsNode',
+                name='novatel_gps',
+                namespace='novatel_bottom',
+                parameters=[{
+                    'connection_type': 'serial',
+                    'device': '/dev/ttyUSB1',
                     'verbose': True,
                     'imu_sample_rate': -1.0,
                     'publish_novatel_positions': True,

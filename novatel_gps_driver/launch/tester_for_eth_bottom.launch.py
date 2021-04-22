@@ -1,4 +1,4 @@
-"""Launch an example driver that communicates using USB"""
+"""Launch an example driver that communicates using TCP"""
 
 from launch import LaunchDescription
 import launch_ros.actions
@@ -16,16 +16,17 @@ def generate_launch_description():
                 node_plugin='novatel_gps_driver::NovatelGpsNode',
                 node_name='novatel_gps',
                 parameters=[{
-                    'connection_type': 'serial',
-                    'device': '/dev/ttyUSB0',
+                    'connection_type': 'tcp',
+                    'device': '10.42.0.60:3001',
                     'verbose': True,
-                    'imu_sample_rate': -1.0,
+                    'imu_sample_rate': 100.0,
+                    'polling_period' : 1.0,
+                    'use_binary_messages': True,
                     'publish_novatel_positions': True,
-                    'publish_novatel_psrdop2': True,
-                    'publish_novatel_velocity': True,
                     'publish_imu_messages': True,
-                    'use_binary_messages':True,
-                    'imu_frame_id':'/imu',
+                    'publish_novatel_velocity': False,
+                    'publish_novatel_psrdop2': False,
+                    'imu_frame_id': '/imu',
                     'frame_id': '/gps'
                 }]
             )
