@@ -23,8 +23,8 @@ def generate_launch_description():
                     'use_binary_messages': True,
                     'publish_novatel_positions': True,
                     'publish_imu_messages': True,
-                    'publish_novatel_velocity': True,
-                    'publish_novatel_psrdop2': True,
+                    'publish_novatel_velocity': False,
+                    'publish_novatel_psrdop2': False,
                     'imu_frame_id': '/imu',
                     'frame_id': '/gps'
                 }]
